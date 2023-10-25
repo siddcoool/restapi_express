@@ -13,11 +13,10 @@ app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });
 
-app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
-
 app.use('/authors', authorRoutes)
 app.use("/books", bookRoutes)
 
+app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
 
 
 // app.listen(3000, ()=>console.log('Server is running on port 3000'))
