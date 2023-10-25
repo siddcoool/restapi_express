@@ -1,5 +1,6 @@
 const express = require('express');
 const Book = require('../models/book');
+const Author = require("../models/author")
 const app = express.Router();
 
 
@@ -11,7 +12,8 @@ app.get('/', async (req, res) => {
 app.get('/:id', async (req, res) => {
     const id = req.params.id;
     let book = await Book.findById(id)
-    res.json(book)
+    const author = await Author.findById(book.authorId)
+    res.json({book,author})
 });
 
 app.post('/', async (req, res) => {
@@ -66,5 +68,7 @@ app.put("/:booksId/authors/:authorId", async (req,res)=>{
      })
     res.json(book)
 })
+
+
 
 module.exports = app;
