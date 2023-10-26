@@ -4,7 +4,7 @@ const bookSchema = new mongoose.Schema({
     // Add more fields as needed
     name: String,
     price: Number,
-    authorId: mongoose.Types.ObjectId
+    authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'author' }
 });
 
 
