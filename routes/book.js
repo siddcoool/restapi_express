@@ -10,10 +10,12 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/:id', async (req, res) => {
+    //return res.json(await Book.findById(req.params.id).populate('authorId'))
     const id = req.params.id;
-    let book = await Book.findById(id)
-    const author = await Author.findById(book.authorId)
-    res.json({book,author})
+    let book = await Book.findById(id).populate("authorId")
+    
+   // const author = await Author.findById(book.authorId)
+    res.json({book})
 });
 
 app.post('/', async (req, res) => {
